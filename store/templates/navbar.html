@@ -1,0 +1,318 @@
+
+
+
+        <!-- ========== HEADER ========== -->
+        <header id="header" class="u-header u-header-left-aligned-nav">
+            <div class="u-header__section">
+                <!-- Topbar -->
+                <div class="u-header-topbar bg-gray-1 py-2 d-none d-xl-block">
+                    <div class="container">
+                        <div class="d-flex align-items-center">
+                            <div class="topbar-left">
+                               <ul class="list-inline mb-0">
+                                    <li class="list-inline-item u-header-topbar__nav-item u-header-topbar__nav-item-no-border mr-0">
+                                        <a href="tel:+060800801858" class="u-header-topbar__nav-link">
+                                        <i class="fas fa-phone-alt text-primary mr-1" style="font-size: 15px;"></i> +060 (800) 801-858</a>
+                                    </li>
+                                    <li class="list-inline-item u-header-topbar__nav-item u-header-topbar__nav-item-no-border">
+                                        <a href="mailto:devservices@gmail.com" class="u-header-topbar__nav-link">
+                                        <i class="far fa-envelope text-primary mr-1" style="font-size: 15px;"></i> devservices@gmail.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="topbar-right ml-auto">
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                        <a href="#" class="u-header-topbar__nav-link">
+                                          <i class="fas fa-map-marker-alt mr-1" style="opacity: 0.9; font-size: 13px;"></i> Store Locator</a>
+                                    </li>
+                                    
+                                     {% if request.user.is_authenticated and request.user.first_name %}
+                                        <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                        <a href="{% url 'order_history' %}" class="u-header-topbar__nav-link">
+                                        <i class="fas fa-book mr-1" style="opacity: 0.9; font-size: 13px;"></i> Order History
+                                        </a>
+                                    </li>
+                                    {% else %}
+                                      <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                        <a href="{% url 'signin' %}" class="u-header-topbar__nav-link">
+                                        <i class="fas fa-truck mr-1" style="opacity: 0.9; font-size: 13px;"></i> Track Your Order</a>
+                                    </li>
+                                     {% endif %}
+                                    <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                          {% if request.user.is_authenticated and request.user.first_name %}
+
+                                            <a class="u-header-topbar__nav-link"
+                                            href="javascript:{document.getElementById('logout').submit()}">
+                                            <i class="fas fa-sign-out-alt mr-1" style="opacity: 0.9; font-size: 13px;"></i> 
+                                            Sign out
+                                            </a>
+                                            <form action="{% url 'signout' %}" method="post" id="logout">
+                                            {% csrf_token %}
+                                            <input type="hidden">
+                                            </form>
+                                
+                                          </a>
+
+                                         {% else %}
+                                         <a href="{% url 'signup' %}" class="u-header-topbar__nav-link">
+                                            <i class="far fa-user mr-1" style="opacity: 0.9; font-size: 13px;"></i> Register</a> <span class="text-gray-50">or</span> 
+                                            
+                                            <a href="{% url 'signin' %}" class="u-header-topbar__nav-link">
+                                            Sign in</a>
+                                       {% endif %}
+                                     
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Topbar -->
+
+                <!-- Logo-Search-header-icons -->
+                <div class="py-2 py-xl-5 bg-primary-down-lg">
+                    <div class="container my-0dot5 my-xl-0">
+                        <div class="row align-items-center">
+                            <!-- Logo-offcanvas-menu -->
+                            <div class="col-auto">
+                                <!-- Nav -->
+                                <nav class="navbar navbar-expand u-header__navbar py-0 justify-content-xl-between max-width-270 min-width-270">
+                                    <!-- Logo -->
+                                    <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="{% url 'home' %}" aria-label="Electro">
+                                       <h1 class="font-size-30 text-gray-90"><i class="fas fa-laptop-code"></i> <strong>TechStore</strong></h1>
+                                    </a>
+                                    <!-- End Logo -->
+
+                                    <!-- Fullscreen Toggle Button -->
+                                    <button id="sidebarHeaderInvokerMenu" type="button" class="navbar-toggler d-block btn u-hamburger mr-3 mr-xl-0"
+                                        aria-controls="sidebarHeader"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        data-unfold-event="click"
+                                        data-unfold-hide-on-scroll="false"
+                                        data-unfold-target="#sidebarHeader1"
+                                        data-unfold-type="css-animation"
+                                        data-unfold-animation-in="fadeInLeft"
+                                        data-unfold-animation-out="fadeOutLeft"
+                                        data-unfold-duration="500">
+                                        <span id="hamburgerTriggerMenu" class="u-hamburger__box">
+                                            <span class="u-hamburger__inner"></span>
+                                        </span>
+                                    </button>
+                                    <!-- End Fullscreen Toggle Button -->
+                                </nav>
+                                <!-- End Nav -->
+
+                                <!-- ========== HEADER SIDEBAR ========== -->
+                                <aside id="sidebarHeader1" class="u-sidebar u-sidebar--left" aria-labelledby="sidebarHeaderInvokerMenu">
+                                    <div class="u-sidebar__scroller">
+                                        <div class="u-sidebar__container">
+                                            <div class="u-header-sidebar__footer-offset pb-0">
+                                                <!-- Toggle Button -->
+                                                <div class="position-absolute top-0 right-0 z-index-2 pt-4 pr-7">
+                                                    <button type="button" class="close ml-auto"
+                                                        aria-controls="sidebarHeader"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        data-unfold-event="click"
+                                                        data-unfold-hide-on-scroll="false"
+                                                        data-unfold-target="#sidebarHeader1"
+                                                        data-unfold-type="css-animation"
+                                                        data-unfold-animation-in="fadeInLeft"
+                                                        data-unfold-animation-out="fadeOutLeft"
+                                                        data-unfold-duration="500">
+                                                        <span aria-hidden="true">
+                                                        <i class="fas fa-times text-gray-90 font-size-20"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <!-- End Toggle Button -->
+
+                                                <!-- Content -->
+                                                <div class="js-scrollbar u-sidebar__body">
+                                                    <div id="headerSidebarContent" class="u-sidebar__content u-header-sidebar__content">
+                                                         <br>
+                                                        <a class="d-flex ml-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-vertical" href="{% url 'home' %}" aria-label="Electro">
+                                                            <h1 class="font-size-20 text-gray-90 ml-3">  <strong>Category</strong></h1>
+                                                        </a>
+                                                        <!-- End Logo -->
+
+                                                        <!-- List -->
+                                                        <ul id="headerSidebarList" class="u-header-collapse__nav">
+                                                           {% for category in links %}
+                                                        <li class="u-has-submenu u-header-collapse__submenu">
+                                                            <a id="TVMegaMenu" class="nav-link u-header__nav-link" 
+                                                            href="{{category.get_url}}" aria-haspopup="true" 
+                                                            aria-expanded="false">{{category.name}}</a>
+                                                        </li>
+                                                        {% endfor %}
+                                                          
+                                                        </ul>
+                                                        <!-- End List -->
+                                                    </div>
+                                                </div>
+                                                <!-- End Content -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>
+                                <!-- ========== END HEADER SIDEBAR ========== -->
+                            </div>
+                            <!-- End Logo-offcanvas-menu -->
+
+                            <!-- Search Bar -->
+                            <div class="col d-none d-xl-block" style="max-width: 50%;">
+
+                                  <form class="js-focus-state" action="{% url 'search' %}" method="GET">
+                                  <div class="input-group">
+                                    <input type="text" name="title" class="form-control py-2 pl-5 font-size-15 border-right-0 height-40 border-width-2 rounded-left-pill border-primary" placeholder="Searh" />
+                                    <div class="input-group-append">
+
+                                      <button class="btn btn-primary height-40 py-2 px-3 rounded-right-pill" 
+                                       type="submit" id="searchProduct1">
+                                                 <i class="fas fa-search font-size-24"></i>
+                                            </button>
+
+                                    </div>
+                                  </div>
+                                </form>
+
+                            </div>
+                            <!-- End Search Bar -->
+                            <!-- Header Icons -->
+                            <div class="col col-xl-auto text-right text-xl-left pl-0 pl-xl-3 position-static">
+                                <div class="d-inline-flex">
+                                    <ul class="d-flex list-unstyled mb-0 align-items-center">
+                                        <!-- Search -->
+                                         <li class="col d-xl-none px-2 px-sm-3 position-static">
+                                            <a id="searchClassicInvoker" class="font-size-22 text-gray-90 text-lh-1 btn-text-secondary" href="javascript:;" role="button"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Search"
+                                                aria-controls="searchClassic"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                                data-unfold-target="#searchClassic"
+                                                data-unfold-type="css-animation"
+                                                data-unfold-duration="300"
+                                                data-unfold-delay="300"
+                                                data-unfold-hide-on-scroll="true"
+                                                data-unfold-animation-in="slideInUp"
+                                                data-unfold-animation-out="fadeOut">
+                                                <i class="fas fa-search" style="font-size: 17px;"></i>
+                                            </a>
+
+                                            <!-- Input -->
+                                            <div id="searchClassic" class="dropdown-menu dropdown-unfold dropdown-menu-right left-0 mx-2" aria-labelledby="searchClassicInvoker">
+                                                <form class="js-focus-state input-group px-3" action="{% url 'search' %}" method="GET">
+                                                    <input class="form-control" type="search" placeholder="Search Product">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary px-3" type="submit">
+                                                          <i class="fas fa-search" style="font-size: 17px;"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- End Input -->
+                                        </li>
+                                        <!-- End Search -->
+                                        <style>
+                                            @media(max-width: 650px) {
+                                              .carticon {
+                                                margin-left: 20px;
+                                              }
+                                            }
+                                        </style>
+                                       
+                                        <li class="col pr-xl-0 px-2 px-sm-3">
+   
+                                                {% if item_count > 0 %}
+                                               <i class="font-size-22 fas fa-shopping-cart carticon"></i>
+                                                <a class="text-gray-90" href="{% url 'cart_detail' %}">
+                                                  <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12">
+                                                      {{item_count}}
+                                                  </span>
+                                                </a>
+                                                {% else %}
+                                                <i class="font-size-22 fas fa-shopping-cart carticon"></i>
+                                                <a class="text-gray-90" href="{% url 'cart_detail' %}">
+                                                  <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12">
+                                                      0
+                                                  </span>
+                                                </a>
+                                                {% endif %}
+                                                
+                                               
+                                        </li>
+
+                                        <li class="d-md-inline d-sm-none d-none col-xl-12" style="margin-left: 30px;">
+                                            
+                                         {% if request.user.is_authenticated and request.user.first_name %}
+                                            Welcome, {{ request.user.first_name }}!
+                                         {% else %}
+                                              Not a member yet? 
+                                              <strong>
+                                             <a href="{% url 'signup' %}" class="u-header-topbar__nav-link">
+                                             Sign up!</a></strong>
+                                            
+                                           
+                                       {% endif %}
+                                            
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Header Icons -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Logo-Search-header-icons -->
+
+                <!-- Primary-menu-wide -->
+                <div class="d-none d-xl-block bg-primary">
+                    <div class="container">
+                        <div class="min-height-45">
+                            <!-- Nav -->
+                            <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--wide u-header__navbar--no-space">
+                                <!-- Navigation -->
+                                <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
+                                    <ul class="navbar-nav u-header__navbar-nav">
+                                       
+                                <li class="nav-item hs-has-mega-menu u-header__nav-item"
+                                    data-event="hover"
+                                    data-animation-in="slideInUp"
+                                    data-animation-out="fadeOut">
+                                    <a id="TVMegaMenu" 
+                                    class="nav-link u-header__nav-link" 
+                                      href="{% url 'home' %}"
+                                    aria-haspopup="true" 
+                                    aria-expanded="false">
+                                    All Products
+                                    </a>
+                                </li>
+
+                              {% for category in links %}
+                              <li class="nav-item hs-has-mega-menu u-header__nav-item"
+                                  data-event="hover"
+                                  data-animation-in="slideInUp"
+                                  data-animation-out="fadeOut">
+                                  <a id="TVMegaMenu" class="nav-link u-header__nav-link" 
+                                  href="{{category.get_url}}" aria-haspopup="true" 
+                                  aria-expanded="false">{{category.name}}</a>
+                              </li>
+                              {% endfor %}
+
+                                    </ul>
+                                </div>
+                                <!-- End Navigation -->
+                            </nav>
+                            <!-- End Nav -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Primary-menu-wide -->
+            </div>
+        </header>
+        <!-- ========== END HEADER ========== -->

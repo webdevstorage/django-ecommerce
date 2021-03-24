@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+ <!-- Slider Section -->
+            <div class="mb-4">
+                <div class="bg-img-hero" style="background-image: url({% static 'img/wallpaper1.jpg' %}); padding-bottom: 50px; max-height: 600px;">
+                    <div class="container overflow-hidden">
+                        <div class="js-slick-carousel u-slick"
+                            data-pagi-classes="text-center position-absolute right-0 bottom-0 left-0 u-slick__pagination u-slick__pagination--long justify-content-center mb-3 mb-md-4">
+                            <div class="js-slide">
+                                <div class="row pt-7 py-md-0">
+                                    <div class="d-none d-wd-block offset-1"></div>
+                                    <div class="col-xl col col-md-6 mt-md-8 mt-lg-10">
+                                        <div class="ml-xl-4">
+                                            <h6 class="font-size-15 font-weight-bold mb-2 text-cyan"
+                                                data-scs-animation-in="fadeInUp">
+                                                SHOP TO GET WHAT YOU LOVE
+                                            </h6>
+                                            <h1 class="font-size-46 text-lh-50 font-weight-light mb-8"
+                                                data-scs-animation-in="fadeInUp"
+                                                data-scs-animation-delay="200">
+                                                TIMEPIECES THAT MAKE A STATEMENT UP TO <stong class="font-weight-bold">40% OFF</stong>
+                                            </h1>
+                                            <a href="{% url 'home' %}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
+                                                data-scs-animation-in="fadeInUp"
+                                                data-scs-animation-delay="300">
+                                                Start Buying
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-7 col-6 d-flex align-items-end ml-auto ml-md-0"
+                                        data-scs-animation-in="fadeInRight"
+                                        data-scs-animation-delay="500">
+                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto" 
+                                        style="max-width: 400px;"
+                                        src="{% static 'img/gaming-laptop.png' %}" alt="Image Description">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="js-slide">
+                                <div class="row pt-7 py-md-0">
+                                    <div class="d-none d-wd-block offset-1"></div>
+                                    <div class="col-xl col col-md-6 mt-md-8 mt-lg-10">
+                                        <div class="ml-xl-4">
+                                            <h6 class="font-size-15 font-weight-bold mb-2 text-cyan"
+                                                data-scs-animation-in="fadeInUp">
+                                                SHOP TO GET WHAT YOU LOVE
+                                            </h6>
+                                            <h1 class="font-size-46 text-lh-50 font-weight-light mb-8"
+                                                data-scs-animation-in="fadeInUp"
+                                                data-scs-animation-delay="200">
+                                                TIMEPIECES THAT MAKE A STATEMENT UP TO <stong class="font-weight-bold">40% OFF</stong>
+                                            </h1>
+                                            <a href="{% url 'home' %}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
+                                                data-scs-animation-in="fadeInUp"
+                                                data-scs-animation-delay="300">
+                                                Start Buying
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-7 col-6 flex-horizontal-center ml-auto ml-md-0"
+                                        data-scs-animation-in="fadeInRight"
+                                        data-scs-animation-delay="500">
+                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto h-100" 
+                                        style="max-width: 390px; margin-top: 55px;"
+                                        src="{% static 'img/laptop-5.png' %}" alt="Image Description">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="js-slide">
+                                <div class="row pt-7 py-md-0">
+                                    <div class="d-none d-wd-block offset-1"></div>
+                                    <div class="col-xl col col-md-6 mt-md-8 mt-lg-10">
+                                        <div class="ml-xl-4">
+                                            <h6 class="font-size-15 font-weight-bold mb-2 text-cyan"
+                                                data-scs-animation-in="fadeInUp">
+                                                SHOP TO GET WHAT YOU LOVE
+                                            </h6>
+                                            <h1 class="font-size-46 text-lh-50 font-weight-light mb-8"
+                                                data-scs-animation-in="fadeInUp"
+                                                data-scs-animation-delay="200">
+                                                TIMEPIECES THAT MAKE A STATEMENT UP TO <stong class="font-weight-bold">40% OFF</stong>
+                                            </h1>
+                                            <a href="{% url 'home' %}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
+                                                data-scs-animation-in="fadeInUp"
+                                                data-scs-animation-delay="300">
+                                                Start Buying
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-7 col-6 flex-horizontal-center ml-auto ml-md-0"
+                                        data-scs-animation-in="fadeInRight"
+                                        data-scs-animation-delay="500">
+                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto h-100" 
+                                        style="max-width: 390px; position: relative; top: 40px;"
+                                        src="{% static 'img/laptop-6.png' %}" alt="Image Description">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Slider Section -->
+
+
+               <div class="container">
+           <!-- Feature List -->
+                <div class="mb-6 row border rounded-lg mx-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+                    <!-- Feature List -->
+                    <div class="media col px-6 px-xl-4 px-wd-8 flex-shrink-0 flex-xl-shrink-1 min-width-270-all py-3">
+                        <div class="u-avatar mr-2">
+                            <i class="text-primary fas fa-truck-moving font-size-46"></i>
+                        </div>
+                        <div class="media-body text-center">
+                            <span class="d-block font-weight-bold text-dark">Free Delivery</span>
+                            <div class=" text-secondary">from $50</div>
+                        </div>
+                    </div>
+                    <!-- End Feature List -->
+
+                    <!-- Feature List -->
+                    <div class="media col px-6 px-xl-4 px-wd-8 flex-shrink-0 flex-xl-shrink-1 min-width-270-all border-left py-3">
+                        <div class="u-avatar mr-2">
+                            <i class="text-primary far fa-thumbs-up font-size-40"></i>
+                        </div>
+                        <div class="media-body text-center">
+                            <span class="d-block font-weight-bold text-dark">99 % Customer</span>
+                            <div class=" text-secondary">Feedbacks</div>
+                        </div>
+                    </div>
+                    <!-- End Feature List -->
+
+                    <!-- Feature List -->
+                    <div class="media col px-6 px-xl-4 px-wd-8 flex-shrink-0 flex-xl-shrink-1 min-width-270-all border-left py-3">
+                        <div class="u-avatar mr-2">
+                            <i class="text-primary far fa-calendar-check font-size-40"></i>
+                        </div>
+                        <div class="media-body text-center">
+                            <span class="d-block font-weight-bold text-dark">365 Days</span>
+                            <div class=" text-secondary">for free return</div>
+                        </div>
+                    </div>
+                    <!-- End Feature List -->
+
+                    <!-- Feature List -->
+                    <div class="media col px-6 px-xl-4 px-wd-8 flex-shrink-0 flex-xl-shrink-1 min-width-270-all border-left py-3">
+                        <div class="u-avatar mr-2">
+                            <i class="text-primary far fa-credit-card font-size-40"></i>
+                        </div>
+                        <div class="media-body text-center">
+                            <span class="d-block font-weight-bold text-dark">Payment</span>
+                            <div class=" text-secondary">Secure System</div>
+                        </div>
+                    </div>
+                    <!-- End Feature List -->
+
+                </div>
+                </div>
+                <!-- End Feature List -->
+
+
+        <div class="container">
+          <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab" data-target-group="groups">
+              <ul class="row list-unstyled products-group no-gutters" style="min-height: 350px;">
+
+{% for product in products %}
+ 
+        <li class="col-12 col-sm-6 col-md-4 col-xl-3 product-item">
+              <div class="product-item__outer h-100 w-100">
+                  <div class="product-item__inner px-xl-4 p-3">
+                      <div class="product-item__body pb-xl-2">
+                          <h5 class="mb-1 product-item__title"><a href="{{product.get_url}}" class="text-blue font-weight-bold">{{product.name}}</a></h5>
+                          <div class="mb-2">
+                              <a href="{{product.get_url}}" class="d-block text-center">
+                                <img class="img-fluid" src="{{product.image.url}}" alt="Image Description">
+                              </a>
+                          </div>
+                          <div class="flex-center-between mb-1">
+                              <div class="prodcut-price">
+                                  <div class="text-gray-100">${{product.price}}</div>
+                              </div>
+                              <div class="d-none d-xl-block prodcut-add-cart">
+                                  <a href="{{product.get_url}}" class="btn-add-cart btn-primary transition-3d-hover">
+                                  <i class="fas fa-cart-plus"></i>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </li>
+      {% endfor %}
+
+          
+                            </ul>
+                        </div>
+                       
+                       </div>
+                    </div>
+                    <!-- End Tab Content -->
+                    <br>
+                    <br>
+                    <br>
+{% endblock %}

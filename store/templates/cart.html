@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    {% if not cart_items %}
+        <div class="text-center">
+            <br><br><br><br>
+            <div class="mb-4">
+            <img src="{% static 'img/empty-cart.png' %}" style="width: 50px; text-align: center;">
+            <br>
+            <br>
+            <br>
+            <h4 class="text-center">Your shopping cart is empty</h4>
+            <br>
+             </div>
+            <br>
+            <p class="text-center">
+                Please click <a href="{% url 'home' %}">here</a> to continue shopping
+            </p>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+    {% else %}
+
+  <div class="text-center">
+    <br> <br>
+     <div class="mb-4">
+            <br>
+            <h4 class="text-center">Your shopping cart</h4>
+            <br>
+      </div>
+     <br>
+  </div>
+
+        <style>
+            button.stripe-button-el,
+            button.stripe-button-el>span {
+            background-color: #fed700 !important;
+            background-image: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            }
+            button.stripe-button-el:focus {
+                background-color: #fed700 !important;
+            }
+        </style>
+
+
+          <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main" class="cart-page">
+
+            <!-- End breadcrumb -->
+
+            <div class="container">
+              
+                <div class="mb-10 cart-table">
+                    <form class="mb-4" action="#" method="post">
+                        <table class="table" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="product-remove">&nbsp;</th>
+                                    <th class="product-name">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity w-lg-15">Quantity</th>
+                                    <th class="product-remove">&nbsp;</th>
+                                    <th class="product-subtotal">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                             
+            {% for cart_item in cart_items %}
+                <tr class="">
+
+                  <td class="d-none d-md-table-cell">
+                    <a href="#"><img class="img-fluid max-width-100 p-1 border border-color-1" src="{{cart_item.product.image.url}}" alt="Image Description"></a>
+                 </td>
+           
+                <td data-title="Product">
+                    <a href="#" class="text-gray-90">{{cart_item.product.name}}</a>
+                    <a href="#" class="text-gray-90">SKU: {{cart_item.product.id}}</a>
+                </td>       
+
+                  <td data-title="Price">
+                    <span class="">${{cart_item.product.price}}</span>
+                </td>    
+
+                <td data-title="Quantity">
+                <span class="sr-only">Quantity</span>
+                <!-- Quantity -->
+                <div class="border rounded-pill py-1 width-122 w-xl-80 px-3 border-color-1">
+                    <div class="js-quantity row align-items-center">
+                        <div class="col">
+                           {{cart_item.quantity}}
+                        </div>
+                        <div class="col-auto pr-1">
+
+                 {% if cart_item.quantity < cart_item.product.stock %}
+                    <td>
+                        &nbsp;<a href="{% url 'add_cart' cart_item.product.id %}" 
+                            class="js-plus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0">
+                                <small class="fas fa-plus btn-icon__inner"></small>
+                              </a>
+                        &nbsp;<a href="{% url 'cart_remove' cart_item.product.id %}"
+                         class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0">
+                                   <small class="fas fa-minus btn-icon__inner"></small>
+                                </a>
+                        &nbsp;<a href="{% url 'cart_remove_product' cart_item.product.id %}"
+                         class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0">
+                                   <small class="fas fa-trash-alt btn-icon__inner"></small>
+                              </a>
+                    </td>
+                    {% else %}
+                        &nbsp;<a href="{% url 'cart_remove' cart_item.product.id %}"
+                         class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0">
+                                <small class="fas fa-minus btn-icon__inner"></small>
+                               </a>
+                        &nbsp;<a href="{% url 'cart_remove_product' cart_item.product.id %}"
+                        class="js-plus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0">
+                                <small class="fas fa-plus btn-icon__inner"></small>
+                              </a>
+                    {% endif %}
+
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- End Quantity -->
+            </td>
+           
+
+            <td data-title="Total">
+                <span class="">${{cart_item.sub_total}}</span>
+            </td>
+
+                </tr>
+            {% endfor %}
+
+                                <tr>
+                                    <td colspan="6" class="border-top space-top-2 justify-content-center">
+                                        <div class="pt-md-3">
+                                            <div class="d-block d-md-flex flex-center-between">
+                                                <div class="offset-md-10 mb-3 mb-md-0 w-xl-30">
+                                                <form class="" action="" method="POST">
+                                                    {% csrf_token %}
+                                                    <script
+                                                        src="https://checkout.stripe.com/checkout.js"
+                                                        class="stripe-button"
+                                                        data-key="{{ data_key }}"
+                                                        data-amount="{{ stripe_total }}"
+                                                        data-name="Z-Store"
+                                                        data-description="{{ description }}"
+                                                        data-locale="auto"
+                                                        data-currency="cad"
+                                                        data-shipping-address="true"
+                                                        data-billing-address="true"
+                                                        data-zip-code="true"
+                                                        data-label="Proceed to checkout"
+                                                    >
+                                                    </script>
+                                                </form>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="mb-8 cart-total">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-6 offset-lg-6 offset-xl-7 col-md-8 offset-md-4">
+                            <div class="border-bottom border-color-1 mb-3">
+                                <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Cart totals</h3>
+                            </div>
+                            <table class="table mb-3 mb-md-0">
+                                <tbody>
+                                    <tr class="order-total">
+                                        <th>Total</th>
+                                        <td data-title="Total"><strong><span class="amount">${{total}}</span></strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+      {% endif %}
+{% endblock %}

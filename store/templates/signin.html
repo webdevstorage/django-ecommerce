@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Sign in
+{% endblock %}
+
+{% block content %}
+
+         <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+ 
+            <!-- End breadcrumb -->
+
+            <div class="container">
+                <div class="mb-4">
+                    <br>
+                    <br>
+                    <h2 class="text-center">Sign In</h2>
+                </div>
+                <div class="my-4 my-xl-8">
+                    <div class="row">
+                        <div class="col-md-4 ml-xl-auto mr-md-auto mr-xl-0 mb-8 mb-md-0">
+                            <!-- Title -->
+                            <div class="border-bottom border-color-1 mb-6">
+                                <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Login</h3>
+                            </div>
+                            <p class="text-gray-90 mb-4">Welcome back! Sign in to your account.</p>
+                         
+                          
+                                <!-- Form Group -->
+                                <div class="js-form-message form-group">
+
+
+                         
+                <form action="{% url 'signin' %}" method="POST">
+                    {% csrf_token %}
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="password2">Password</label>
+                  <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <input type="submit" value="Sign in" class="btn btn-primary-dark-w px-5">
+                 <br> <br> <br>
+                  {% include 'alerts.html' %}
+              </form>
+                
+                                </div>
+                                <!-- End Form Group -->
+
+                             
+                        </div>
+                        <div class="col-md-1 d-none d-md-block">
+                            <div class="flex-content-center h-100">
+                                <div class="width-1 bg-1 h-100"></div>
+                                <div class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">or</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 ml-md-auto ml-xl-0 mr-xl-auto">
+                            <!-- Title -->
+                            <div class="border-bottom border-color-1 mb-6">
+                                <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Register</h3>
+                            </div>
+                            <p class="text-gray-90 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
+                            <!-- End Title -->
+                            <!-- Form Group -->
+                           
+                             
+                                <!-- End Form Group -->
+                                <p class="text-gray-90 mb-4">Your personal data will be used to support your experience throughout this website, to manage your account, and for other purposes described in our <a href="#" class="text-blue">privacy policy.</a></p>
+                                <!-- Button -->
+                                <div class="mb-6">
+                                    <div class="mb-3">
+
+                                          <a href="{% url 'signup' %}" class="btn btn-primary-dark-w px-5">Create New Account</a>
+                                      
+                                    </div>
+                                </div>
+                                <!-- End Button -->
+                       
+                            <h3 class="font-size-18 mb-3">Sign up today and you will be able to :</h3>
+                            <ul class="list-group list-group-borderless">
+                                <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Speed your way through checkout</li>
+                                <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Track your orders easily</li>
+                                <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Keep a record of all your purchases</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <br>
+        <br>
+        <br>
+        <!-- ========== END MAIN CONTENT ========== -->
+{% endblock %}
